@@ -1,38 +1,47 @@
-# Описание.
+# Blogicum v1
 
-## Проект django_sprint1.
+**The first iteration of Blogicum, a blogging site built with Django.** This version has no database: posts are stored in a Python list and rendered through Django's URL routing, views and template inheritance.
 
-## Технологии:
-* Python 3.7
-* Django 3.2
+![Python](https://img.shields.io/badge/Python-3.9-3776AB?logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-3.2-092E20?logo=django&logoColor=white)
+![pytest](https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white)
 
-## Описание проекта
+## What it shows
 
-Небольшая социальная сеть для публикации личных дневников. Данные для социальной сети располагаются списком в файле views.py.
-![image](https://github.com/RiSSoL-86/django_sprint1/assets/110422516/9ac56170-3969-4bd0-b9ba-543f4a3ad8c1)
+- A Django project split into two apps: `blog` (posts) and `pages` (static pages)
+- Namespaced URLs with path converters: `posts/<int:id>/`, `category/<slug:category_slug>/`
+- Function-based views, plus `TemplateView` for the static pages
+- A template hierarchy (`base.html` + `includes/` for the header, footer and post list)
+- A 404 response for posts that don't exist
 
+## Pages
 
-## Как запустить проект:
+| URL | Page |
+|---|---|
+| `/` | Feed with all posts |
+| `/posts/<id>/` | Single post |
+| `/category/<slug>/` | Posts in a category |
+| `/pages/about/` | About the project |
+| `/pages/rules/` | Site rules |
 
-* Клонировать репозиторий и перейти в него в командной строке:
+## Run it
 
-        git clone git@github.com:RiSSoL-86/django_sprint1.git
-        cd django_sprint1
+```bash
+git clone https://github.com/ehaterina15/django_sprint1.1.git
+cd django_sprint1.1
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+cd blogicum
+python manage.py runserver
+```
 
-* Cоздать и активировать виртуальное окружение:
+Run the tests from the repository root with `pytest`.
 
-        python -m venv venv
-        source venv/Scripts/activate
+## Context
 
-* Установить зависимости из файла requirements.txt:
+Sprint 1 of the Django module at [Yandex Practicum](https://practicum.yandex.com/). The finished, database-backed version of the project is in [django_sprint4](https://github.com/ehaterina15/django_sprint4).
 
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+## Author
 
-* Запустить проект:
-
-        python manage.py runserver
-
-* Перейти на локальный сервер:
-
-        http://127.0.0.1:8000/
+**Ekaterina Mashentseva** · [GitHub](https://github.com/ehaterina15)
